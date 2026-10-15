@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>FORGE BY STEF (FBS) — 3D-друк деталей, декору та дрібносерійне виробництво | Івано-Франківськ / Яремче</title>
+  <meta name="description" content="FORGE BY STEF — Ваша Кузня інновацій. Створюємо те, що не можна купити! Професійний 3D-друк та 3D-моделювання, відновлення рідкісних автозапчастин, інтер'єрний декор, прототипи та дрібносерійне виробництво. Івано-Франківськ, Яремче, доставка по Україні та за кордон." />
+  <meta name="keywords" content="3D друк, 3д друк на замовлення, 3D друк Івано-Франківськ, 3D друк Яремче, відновлення деталей, друк автозапчастин, 3D моделювання, реверс інжиніринг, 3D декор, дрібносерійне виробництво, FORGE BY STEF, FBS" />
+  <meta name="author" content="FORGE BY STEF" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#021024" />
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:site_name" content="FORGE BY STEF" />
+  <meta property="og:title" content="FORGE BY STEF — Створюємо те, що не можна купити!" />
+  <meta property="og:description" content="3D-друк та моделювання: відновлення рідкісних деталей, функціональні прототипи, інтер'єрний декор та невеликі серії виробів. Доставка по Україні та за кордон." />
+
+  <!-- Schema.org LocalBusiness Structured Data (Privacy-safe, no phone harvesting) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "FORGE BY STEF (FBS)",
+    "alternateName": "FBS — Ваша Кузня інновацій",
+    "description": "Студія 3D-друку, 3D-моделювання, відновлення рідкісних деталей, виготовлення декору та дрібносерійного виробництва.",
+    "slogan": "Створюємо те, що не можна купити!",
+    "areaServed": [
+      { "@type": "City", "name": "Івано-Франківськ" },
+      { "@type": "City", "name": "Яремче" },
+      { "@type": "Country", "name": "Україна" }
+    ],
+    "sameAs": [
+      "https://t.me/Samurai_AIF",
+      "https://www.instagram.com/forge_by_stef/"
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Unbounded (Display), Manrope (Body), JetBrains Mono (CAD Specs) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: {
+            'wide': '1600px',
+            'ultrawide': '2200px'
+          },
+          colors: {
+            fbs: {
+              navy: '#021024',
+              deep: '#051937',
+              card: '#071c3b',
+              ice: '#68b5ff',
+              cyan: '#38bdf8',
+              line: 'rgba(148, 197, 255, 0.14)'
+            }
+          },
+          fontFamily: {
+            display: ['Unbounded', 'sans-serif'],
+            sans: ['Manrope', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg-navy: #021024;
+      --ice-blue: #68b5ff;
+      --cyan-glow: #38bdf8;
+    }
+
+    body {
+      background-color: #021024;
+      color: #f8fafc;
+      font-family: 'Manrope', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Engineering CAD Grid & Ambient Lighting */
+    .cad-bg {
+      background-color: #021024;
+      background-image: 
+        radial-gradient(circle at 75% 22%, rgba(56, 189, 248, 0.16) 0%, rgba(10, 38, 77, 0.08) 38%, transparent 70%),
+        radial-gradient(circle at 18% 65%, rgba(104, 181, 255, 0.10) 0%, transparent 55%),
+        linear-gradient(to right, rgba(148, 197, 255, 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 197, 255, 0.055) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+    }
+
+    .cad-subgrid {
+      background-image: 
+        linear-gradient(to right, rgba(104, 181, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(104, 181, 255, 0.07) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* Adaptive Layout Scaling for 16:9 (FHD/QHD/4K) and 21:9 Ultrawide Monitors */
+    @media (min-width: 1536px) {
+      .max-w-7xl {
+        max-width: min(90vw, 1540px) !important;
+      }
+      .max-w-6xl {
+        max-width: min(90vw, 1440px) !important;
+      }
+    }
+
+    @media (min-width: 1920px), (min-aspect-ratio: 21/10) and (min-width: 1440px) {
+      .max-w-7xl {
+        max-width: min(88vw, 1760px) !important;
+      }
+      .max-w-6xl {
+        max-width: min(88vw, 1660px) !important;
+      }
+      .cad-bg {
+        background-size: 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+      }
+    }
+
+    @media (min-width: 2500px) and (min-aspect-ratio: 21/10) {
+      .max-w-7xl {
+        max-width: min(84vw, 2040px) !important;
+      }
+      .max-w-6xl {
+        max-width: min(84vw, 1920px) !important;
+      }
+    }
+
+    /* Ice-Blue Headline Gradient */
+    .text-ice-gradient {
+      background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 45%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 28px rgba(56, 189, 248, 0.22));
+    }
+
+    /* Slow Precision Gear Rotation */
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spinReverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    .animate-gear {
+      animation: spinSlow 28s linear infinite;
+    }
+    .animate-gear-reverse {
+      animation: spinReverse 36s linear infinite;
+    }
+
+    /* Floating CAD Object Animation */
+    @keyframes floatCad {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+    .animate-float {
+      animation: floatCad 5.5s ease-in-out infinite;
+    }
+
+    /* Slicer Laser Scan Animation */
+    @keyframes laserScan {
+      0% { top: 8%; opacity: 0.2; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { top: 88%; opacity: 0.2; }
+    }
+    .slicer-laser {
+      animation: laserScan 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+    }
+
+    /* Card Glass & Technical Corners */
+    .tech-card {
+      background: linear-gradient(180deg, rgba(10, 29, 61, 0.72) 0%, rgba(4, 18, 40, 0.88) 100%);
+      border: 1px solid rgba(148, 197, 255, 0.15);
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.65);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tech-card:hover {
+      border-color: rgba(104, 181, 255, 0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px -12px rgba(2, 16, 36, 0.9), 0 0 30px -5px rgba(56, 189, 248, 0.16);
+    }
+
+    /* Corner Crosshair Accents */
+    .corner-mark {
+      position: relative;
+    }
+    .corner-mark::before,
+    .corner-mark::after {
+      content: '+';
+      position: absolute;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1;
+      color: rgba(104, 181, 255, 0.45);
+      pointer-events: none;
+    }
+    .corner-mark::before { top: 8px; left: 10px; }
+    .corner-mark::after { bottom: 8px; right: 10px; }
+
+    /* Smooth Scroll Reveal Animation */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #021024; }
+    ::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+  </style>
+</head>
+
+<body class="cad-bg min-h-screen selection:bg-sky-400 selection:text-[#021024]">
+
+  <!-- =====================================================================
+       HEADER: FULL-WIDTH CRISP WHITE NAVIGATION BAR
+       ===================================================================== -->
+  <header id="mainHeader" class="sticky top-0 z-50 transition-all duration-300 border-b border-slate-200 bg-white shadow-lg">
+    <!-- Main Navigation Row -->
+    <div id="navContainer" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between transition-colors duration-300">
+      
+      <!-- Brand Logo Block (True 1:1 Proportions from Original Logo) -->
+      <a href="#" class="flex items-center gap-4 group focus:outline-none">
+        <div id="logoPlate" class="relative flex items-center justify-center bg-white text-[#021024] px-2 py-1 rounded-lg transition-all duration-300">
+          <!-- True-Proportion Vector Recreation of FORGE BY STEF Logo -->
+          <svg class="h-12 sm:h-14 w-auto" viewBox="70 155 860 770" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="FORGE BY STEF Logo">
+            <!-- FORGE BY (True full height: y=170..282) -->
+            <path d="M106,172 H186 V196 H132 V217 H178 V240 H132 V282 H106 Z" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M258,170 C291,170 314,194 314,226 C314,258 291,284 258,284 C225,284 202,258 202,226 C202,194 225,170 258,170 Z M258,194 C239,194 228,207 228,226 C228,245 239,260 258,260 C277,260 288,245 288,226 C288,207 277,194 258,194 Z" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M333,172 H386 C409,172 423,186 423,208 C423,224 414,236 398,241 L424,282 H395 L373,244 H359 V282 H333 Z M359,195 V221 H383 C393,221 398,216 398,208 C398,200 393,195 383,195 Z" />
+            <path d="M493,170 C520,170 537,183 542,204 H516 C511,196 503,194 493,194 C474,194 464,207 464,226 C464,245 474,260 493,260 C509,260 519,251 520,238 H491 V218 H542 V235 C542,265 522,284 493,284 C460,284 438,258 438,226 C438,194 460,170 493,170 Z" />
+            <path d="M564,172 H646 V196 H590 V215 H638 V238 H590 V258 H646 V282 H564 Z" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M704,172 H758 C778,172 790,183 790,200 C790,211 784,219 774,223 C787,226 794,236 794,250 C794,270 780,282 759,282 H704 Z M729,194 V215 H753 C761,215 765,211 765,204.5 C765,198 761,194 753,194 Z M729,236 V259 H756 C764,259 769,254 769,247.5 C769,241 764,236 756,236 Z" />
+            <path d="M803,172 H831 L851,215 L871,172 H899 L863.5,240 V282 H838.5 V240 Z" />
+
+            <!-- STEF (True full height: y=320..624) -->
+            <path d="M279,408 C275,349 237,320 183,320 C126,320 90,353 90,408 C90,453 116,478 166,491 L199,500 C220,506 229,515 229,532 C229,551 213,564 187,564 C157,564 139,548 136,521 H83 C86,584 125,626 188,626 C249,626 286,586 286,528 C286,480 259,454 204,439 L172,430 C152,424 144,416 144,400 C144,383 159,371 183,371 C209,371 224,384 227,408 Z" />
+            <path d="M302,325 H507 V386 H433 V621 H376 V386 H302 Z" />
+            <path d="M531,325 H712 V385 H588 V442 H700 V501 H588 V561 H712 V621 H531 Z" />
+            <path d="M739,325 H916 V385 H796 V447 H904 V506 H796 V621 H739 Z" />
+
+            <!-- Geometric Anvil Wings & Mountain Emblem -->
+            <polygon points="83,675 369,675 327,737 83,737" />
+            <polygon points="631,675 916,675 916,737 672,737" />
+            <polygon points="411,663 554,912 269,912 308,844 441,844 411,791 393,823 320,823" />
+            <polygon points="585,663 677,823 623,823 558,710" />
+            <polygon points="545,734 609,844 690,844 729,912 587,912 515,786" />
+          </svg>
+        </div>
+
+        <!-- Exact Left & Right Edge-Aligned Title + Subtitle -->
+        <div class="inline-flex flex-col">
+          <span id="brandTitleText" class="font-display font-extrabold text-base sm:text-lg tracking-wider text-[#021024] whitespace-nowrap leading-none">
+            FORGE BY STEF
+          </span>
+          <span id="brandSubText" class="w-full flex justify-between font-mono text-[9.5px] sm:text-[10.5px] uppercase text-slate-600 mt-1.5 leading-none select-none" aria-label="Ваша Кузня інновацій">
+            <span>В</span><span>А</span><span>Ш</span><span>А</span><span>&nbsp;</span><span>К</span><span>У</span><span>З</span><span>Н</span><span>Я</span><span>&nbsp;</span><span>І</span><span>Н</span><span>Н</span><span>О</span><span>В</span><span>А</span><span>Ц</span><span>І</span><span>Й</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Center Desktop Nav Links -->
+      <nav id="navLinks" class="hidden md:flex items-center gap-8 text-sm font-semibold text-[#021024]">
+        <a href="#services" class="hover:text-sky-600 transition-colors">Напрями</a>
+        <a href="#showcase" class="hover:text-sky-600 transition-colors">Приклади рішень</a>
+        <a href="#order" class="hover:text-sky-600 transition-colors">Оцінити проєкт</a>
+      </nav>
+
+      <!-- Right Location & Telegram CTA -->
+      <div class="flex items-center gap-2.5 sm:gap-4">
+        <div id="headerLocText" class="hidden lg:flex flex-col text-right font-mono text-xs text-[#021024] leading-tight">
+          <span>Івано-Франківськ</span>
+          <span class="text-sky-600 font-semibold">/ Яремче</span>
+        </div>
+
+        <a href="https://t.me/Samurai_AIF" target="_blank" rel="noopener noreferrer"
+           id="headerCtaBtn"
+           class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full font-semibold text-sm bg-[#021024] text-white hover:bg-sky-600 transition-all duration-300 active:scale-95">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+          <span>Telegram</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       HERO SECTION: PUNCHLINE + INTERACTIVE CAD VIEWPORT
+       ===================================================================== -->
+  <main>
+    <section class="relative pt-10 pb-20 lg:pt-16 lg:pb-28 wide:py-24 overflow-hidden">
+      <!-- Subtle Background Blueprint Lines -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 wide:gap-14 items-center">
+          
+          <!-- Left Column: Brand Punchline & Conversion -->
+          <div class="lg:col-span-7 space-y-7 reveal-on-scroll">
+            
+            <!-- Sub-heading Badge: Ваша Кузня інновацій -->
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-400/25 text-sky-300 text-xs font-mono uppercase tracking-[0.18em]">
+              <span class="w-6 h-[1px] bg-sky-400"></span>
+              <!-- Custom SVG Crossed Hammer & Wrench -->
+              <svg class="w-4 h-4 text-sky-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              </svg>
+              <span>ВАША КУЗНЯ ІННОВАЦІЙ</span>
+            </div>
+
+            <!-- Custom Animated Vector Precision Gear + Massive Unbounded Headline -->
+            <div class="space-y-4">
+              <div class="flex items-center gap-4">
+                <div class="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
+                  <!-- Outer CAD Measurement Ring -->
+                  <svg class="w-full h-full absolute inset-0 text-sky-400/30 animate-gear-reverse" viewBox="0 0 100 100" fill="none">
+                    <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1" stroke-dasharray="4 6" />
+                    <circle cx="50" cy="50" r="38" stroke="currentColor" stroke-width="0.75" />
+                  </svg>
+                  <!-- Main Rotating Precision Gear -->
+                  <svg class="w-12 h-12 sm:w-14 sm:h-14 text-white drop-shadow-[0_0_15px_rgba(104,181,255,0.45)] animate-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3.2" fill="#38bdf8" stroke="none" />
+                    <circle cx="12" cy="12" r="5.5" />
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                  </svg>
+                </div>
+                <div class="font-mono text-xs text-slate-400 space-y-0.5 border-l border-sky-400/30 pl-3">
+                  <div class="text-sky-300 font-semibold">CAD / FDM PRODUCTION</div>
+                  <div>ТОЧНІСТЬ ШАРУ: 0.08–0.20 ММ</div>
+                </div>
+              </div>
+
+              <h1 class="font-display font-black text-3xl sm:text-5xl xl:text-[58px] wide:text-[64px] uppercase leading-[1.08] tracking-tight text-white">
+                СТВОРЮЄМО<br />
+                ТЕ, ЩО <span class="text-ice-gradient">НЕ<br class="sm:hidden" /> МОЖНА</span><br />
+                КУПИТИ<span class="text-sky-400">!</span>
+              </h1>
+            </div>
+
+            <!-- Descriptive Paragraph -->
+            <p class="text-base sm:text-lg text-slate-300 max-w-2xl wide:max-w-3xl leading-relaxed font-normal">
+              Від задуму чи уламка — до готового виробу. Відновлюємо рідкісні та зняті з виробництва деталі, створюємо функціональні прототипи, стильний інтер’єрний декор, корпуси та невеликі серії виробів для бізнесу.
+            </p>
+
+            <!-- Feature Pill Tags -->
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-3 py-1.5 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-200">🔹 3D-друк та моделювання</span>
+              <span class="px-3 py-1.5 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-200">🔹 Декор, деталі, корпуси, прототипи</span>
+              <span class="px-3 py-1.5 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-slate-200">🔹 Дрібносерійне виробництво</span>
+            </div>
+
+            <!-- Primary CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <a href="https://t.me/Samurai_AIF" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white text-[#021024] font-display font-bold text-sm uppercase tracking-wider hover:bg-sky-400 transition-all duration-300 shadow-[0_0_35px_rgba(255,255,255,0.22)] hover:shadow-[0_0_40px_rgba(56,189,248,0.45)] group">
+                <svg class="w-5 h-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+                <span>Написати в Telegram</span>
+              </a>
+
+              <a href="https://www.instagram.com/forge_by_stef/" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#071c3b]/80 hover:bg-sky-500/15 text-white border border-sky-400/30 hover:border-sky-400 font-display font-bold text-sm uppercase tracking-wider transition-all duration-300">
+                <svg class="w-5 h-5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>Написати в Instagram</span>
+              </a>
+            </div>
+
+            <!-- Helper Prompt Note -->
+            <div class="flex items-start gap-3 pt-1 pl-3 border-l-2 border-sky-400/50 text-xs sm:text-sm text-slate-400">
+              <svg class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"/>
+              </svg>
+              <p>
+                Для швидкого розрахунку вартості надішліть <strong class="text-slate-200 font-medium">фото деталі (бажано біля лінійки), ескіз або 3D-модель (STL / STEP)</strong> у чат.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive CAD / Slicer Viewport -->
+          <div class="lg:col-span-5 reveal-on-scroll reveal-delay-2">
+            <div class="tech-card corner-mark rounded-2xl p-5 sm:p-6 relative overflow-hidden">
+              
+              <!-- Top Viewport Status Bar -->
+              <div class="flex items-center justify-between pb-4 mb-4 border-b border-sky-400/15 font-mono text-[11px] tracking-wider uppercase">
+                <span class="text-slate-300">ІНЖЕНЕРНА МАЙСТЕРНЯ</span>
+                <span class="inline-flex items-center gap-2 text-emerald-400 font-semibold">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 -ml-4"></span>
+                  ГОТОВІ ДО РОБОТИ
+                </span>
+              </div>
+
+              <!-- Model Switcher Tabs -->
+              <div class="grid grid-cols-4 gap-1.5 mb-4 bg-[#021024]/90 p-1.5 rounded-xl border border-white/10 font-mono text-[10px]">
+                <button onclick="switchCadModel(0)" id="cadTab0" class="cad-tab py-2 px-1 rounded-lg bg-sky-500/20 text-sky-300 border border-sky-400/40 font-semibold transition">
+                  01/ДЕТАЛЬ
+                </button>
+                <button onclick="switchCadModel(1)" id="cadTab1" class="cad-tab py-2 px-1 rounded-lg text-slate-400 hover:text-white transition">
+                  02/ДЕКОР
+                </button>
+                <button onclick="switchCadModel(2)" id="cadTab2" class="cad-tab py-2 px-1 rounded-lg text-slate-400 hover:text-white transition">
+                  03/КОРПУС
+                </button>
+                <button onclick="switchCadModel(3)" id="cadTab3" class="cad-tab py-2 px-1 rounded-lg text-slate-400 hover:text-white transition">
+                  04/СЕРІЯ
+                </button>
+              </div>
+
+              <!-- Interactive Isometric CAD Canvas Area -->
+              <div class="relative h-72 sm:h-80 wide:h-96 rounded-xl cad-subgrid bg-[#020d1f] border border-sky-400/20 flex items-center justify-center overflow-hidden">
+                
+                <!-- Animated Slicer Laser Line (Always ON) -->
+                <div id="slicerLaserLine" class="slicer-laser absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent shadow-[0_0_15px_#38bdf8] z-20 pointer-events-none"></div>
+
+                <!-- Technical HUD Overlays -->
+                <div class="absolute top-3 left-3 font-mono text-[10px] text-sky-400/80 space-y-0.5 pointer-events-none">
+                  <div id="hudModelCode">МОД / 01 — КРОНШТЕЙН & ПРИВІД</div>
+                  <div id="hudMaterial" class="text-slate-400">ТИП: ВІДНОВЛЕННЯ ЗРАЗКА</div>
+                </div>
+                <div class="absolute top-3 right-3 font-mono text-[10px] text-slate-400 text-right pointer-events-none">
+                  <div>МАСШТАБ <span class="text-white">1:1</span></div>
+                  <div id="hudTolerance" class="text-sky-400">КОНТРОЛЬ ГЕОМЕТРІЇ</div>
+                </div>
+
+                <!-- Concentric Target Circles -->
+                <svg class="absolute inset-0 w-full h-full opacity-25 pointer-events-none" viewBox="0 0 300 300">
+                  <circle cx="150" cy="155" r="95" stroke="#38bdf8" stroke-width="0.7" stroke-dasharray="3 5" fill="none" />
+                  <circle cx="150" cy="155" r="65" stroke="#38bdf8" stroke-width="0.5" fill="none" />
+                  <line x1="150" y1="20" x2="150" y2="280" stroke="#38bdf8" stroke-width="0.4" stroke-dasharray="2 4" />
+                  <line x1="20" y1="155" x2="280" y2="155" stroke="#38bdf8" stroke-width="0.4" stroke-dasharray="2 4" />
+                </svg>
+
+                <!-- CAD MODEL 0: ISOMETRIC TECHNICAL ENCLOSURE / AUTO COMPONENT -->
+                <div id="cadView0" class="cad-view animate-float relative z-10 w-64 h-64 wide:w-72 wide:h-72 flex items-center justify-center">
+                  <svg viewBox="0 0 260 240" class="w-full h-full drop-shadow-[0_15px_25px_rgba(56,189,248,0.22)]">
+                    <ellipse cx="130" cy="205" rx="78" ry="14" fill="rgba(56, 189, 248, 0.12)" />
+                    <polygon points="130,52 215,96 130,140 45,96" fill="#16355d" stroke="#7dd3fc" stroke-width="1.5" />
+                    <polygon points="130,66 190,96 130,126 70,96" fill="#06152d" stroke="#38bdf8" stroke-width="1.2" />
+                    <polygon points="45,96 130,140 130,192 45,148" fill="#0d2547" stroke="#60a5fa" stroke-width="1.5" />
+                    <polygon points="215,96 130,140 130,192 215,148" fill="#1e4273" stroke="#93c5fd" stroke-width="1.5" />
+                    <line x1="65" y1="107" x2="65" y2="158" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.5" />
+                    <line x1="85" y1="117" x2="85" y2="168" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.5" />
+                    <line x1="105" y1="127" x2="105" y2="178" stroke="#38bdf8" stroke-width="0.8" stroke-opacity="0.5" />
+                    <line x1="155" y1="127" x2="155" y2="178" stroke="#7dd3fc" stroke-width="0.8" stroke-opacity="0.5" />
+                    <line x1="175" y1="117" x2="175" y2="168" stroke="#7dd3fc" stroke-width="0.8" stroke-opacity="0.5" />
+                    <line x1="195" y1="107" x2="195" y2="158" stroke="#7dd3fc" stroke-width="0.8" stroke-opacity="0.5" />
+                    <circle cx="130" cy="59" r="3" fill="#38bdf8" />
+                    <circle cx="203" cy="96" r="3" fill="#38bdf8" />
+                    <circle cx="57" cy="96" r="3" fill="#38bdf8" />
+                    <circle cx="130" cy="133" r="3" fill="#38bdf8" />
+                    <polyline points="45,82 30,68 12,68" fill="none" stroke="#38bdf8" stroke-width="1" />
+                    <text x="12" y="63" fill="#7dd3fc" font-family="JetBrains Mono" font-size="9">FBS / CAD-01</text>
+                    <polyline points="175,168 195,188 232,188" fill="none" stroke="#38bdf8" stroke-width="1" />
+                    <text x="196" y="183" fill="#7dd3fc" font-family="JetBrains Mono" font-size="9">84.5 ММ</text>
+                  </svg>
+                </div>
+
+                <!-- CAD MODEL 1: SCULPTURAL PARAMETRIC DECOR VASE -->
+                <div id="cadView1" class="cad-view hidden animate-float relative z-10 w-64 h-64 wide:w-72 wide:h-72 flex items-center justify-center">
+                  <svg viewBox="0 0 260 240" class="w-full h-full drop-shadow-[0_15px_25px_rgba(56,189,248,0.25)]">
+                    <ellipse cx="130" cy="205" rx="64" ry="12" fill="rgba(56, 189, 248, 0.14)" />
+                    <path d="M98,48 C110,82 74,125 86,168 C94,192 166,192 174,168 C186,125 150,82 162,48 Z" fill="url(#vaseGrad)" stroke="#7dd3fc" stroke-width="1.6" />
+                    <defs>
+                      <linearGradient id="vaseGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#1e4273" />
+                        <stop offset="50%" stop-color="#0d2547" />
+                        <stop offset="100%" stop-color="#06152d" />
+                      </linearGradient>
+                    </defs>
+                    <ellipse cx="130" cy="48" rx="32" ry="9" fill="#06152d" stroke="#93c5fd" stroke-width="1.6" />
+                    <path d="M98,78 Q130,90 162,78" fill="none" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.65" />
+                    <path d="M89,110 Q130,124 171,110" fill="none" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.65" />
+                    <path d="M84,142 Q130,158 176,142" fill="none" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.65" />
+                    <path d="M90,172 Q130,186 170,172" fill="none" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.65" />
+                    <path d="M114,56 C122,90 100,135 110,184" fill="none" stroke="#bae6fd" stroke-width="0.9" stroke-opacity="0.5" />
+                    <path d="M146,56 C138,90 160,135 150,184" fill="none" stroke="#bae6fd" stroke-width="0.9" stroke-opacity="0.5" />
+                    <polyline points="162,48 190,36 235,36" fill="none" stroke="#38bdf8" stroke-width="1" />
+                    <text x="182" y="31" fill="#7dd3fc" font-family="JetBrains Mono" font-size="9">SPIRAL VASE MODE</text>
+                  </svg>
+                </div>
+
+                <!-- CAD MODEL 2: PRECISION GEAR & REVERSED PART -->
+                <div id="cadView2" class="cad-view hidden animate-float relative z-10 w-64 h-64 wide:w-72 wide:h-72 flex items-center justify-center">
+                  <svg viewBox="0 0 260 240" class="w-full h-full drop-shadow-[0_15px_25px_rgba(56,189,248,0.25)]">
+                    <ellipse cx="130" cy="205" rx="70" ry="12" fill="rgba(56, 189, 248, 0.14)" />
+                    <circle cx="130" cy="120" r="62" fill="#102a4e" stroke="#7dd3fc" stroke-width="2" stroke-dasharray="14 6" />
+                    <circle cx="130" cy="120" r="50" fill="#173763" stroke="#38bdf8" stroke-width="1.5" />
+                    <circle cx="130" cy="120" r="28" fill="#06152d" stroke="#93c5fd" stroke-width="1.8" />
+                    <circle cx="130" cy="120" r="12" fill="#1e4273" stroke="#38bdf8" stroke-width="1.5" />
+                    <line x1="130" y1="70" x2="130" y2="92" stroke="#7dd3fc" stroke-width="3" />
+                    <line x1="130" y1="148" x2="130" y2="170" stroke="#7dd3fc" stroke-width="3" />
+                    <line x1="80" y1="120" x2="102" y2="120" stroke="#7dd3fc" stroke-width="3" />
+                    <line x1="158" y1="120" x2="180" y2="120" stroke="#7dd3fc" stroke-width="3" />
+                    <polyline points="175,85 200,62 242,62" fill="none" stroke="#38bdf8" stroke-width="1" />
+                    <text x="195" y="56" fill="#7dd3fc" font-family="JetBrains Mono" font-size="9">МОДУЛЬ ЗУБА M=2.0</text>
+                  </svg>
+                </div>
+
+                <!-- CAD MODEL 3: SMALL BATCH PRODUCTION MATRIX -->
+                <div id="cadView3" class="cad-view hidden animate-float relative z-10 w-64 h-64 wide:w-72 wide:h-72 flex items-center justify-center">
+                  <svg viewBox="0 0 260 240" class="w-full h-full drop-shadow-[0_15px_25px_rgba(56,189,248,0.25)]">
+                    <polygon points="130,115 235,160 130,205 25,160" fill="#071936" stroke="#38bdf8" stroke-width="1.2" />
+                    <g transform="translate(95, 52)">
+                      <polygon points="35,0 70,18 35,36 0,18" fill="#25548f" stroke="#bae6fd" stroke-width="1.2" />
+                      <polygon points="0,18 35,36 35,72 0,54" fill="#102b52" stroke="#60a5fa" stroke-width="1.2" />
+                      <polygon points="70,18 35,36 35,72 70,54" fill="#1b3f70" stroke="#93c5fd" stroke-width="1.2" />
+                    </g>
+                    <g transform="translate(42, 82)">
+                      <polygon points="35,0 70,18 35,36 0,18" fill="#25548f" stroke="#bae6fd" stroke-width="1.2" />
+                      <polygon points="0,18 35,36 35,72 0,54" fill="#102b52" stroke="#60a5fa" stroke-width="1.2" />
+                      <polygon points="70,18 35,36 35,72 70,54" fill="#1b3f70" stroke="#93c5fd" stroke-width="1.2" />
+                    </g>
+                    <g transform="translate(148, 82)">
+                      <polygon points="35,0 70,18 35,36 0,18" fill="#25548f" stroke="#bae6fd" stroke-width="1.2" />
+                      <polygon points="0,18 35,36 35,72 0,54" fill="#102b52" stroke="#60a5fa" stroke-width="1.2" />
+                      <polygon points="70,18 35,36 35,72 70,54" fill="#1b3f70" stroke="#93c5fd" stroke-width="1.2" />
+                    </g>
+                    <g transform="translate(95, 110)">
+                      <polygon points="35,0 70,18 35,36 0,18" fill="#38bdf8" fill-opacity="0.35" stroke="#ffffff" stroke-width="1.4" />
+                      <polygon points="0,18 35,36 35,72 0,54" fill="#163a69" stroke="#7dd3fc" stroke-width="1.4" />
+                      <polygon points="70,18 35,36 35,72 70,54" fill="#24538c" stroke="#bae6fd" stroke-width="1.4" />
+                    </g>
+                  </svg>
+                </div>
+
+                <!-- Bottom Viewport Label Bar -->
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between font-mono text-[10px] text-slate-400 pt-2 border-t border-sky-400/15">
+                  <span>ВІД МОДЕЛІ ДО ВИРОБУ</span>
+                  <span class="text-white font-semibold">FBS / 001</span>
+                </div>
+              </div>
+
+              <!-- Bottom 3-Column Metrics inside CAD Card (Matched visual weight for Infinity icon) -->
+              <div class="grid grid-cols-3 divide-x divide-sky-400/15 mt-4 pt-3 text-center items-center">
+                <div class="px-2">
+                  <div class="font-display font-bold text-base sm:text-lg text-white leading-7">3D</div>
+                  <div class="font-mono text-[10px] text-slate-400 uppercase mt-0.5">МОДЕЛЮВАННЯ</div>
+                </div>
+                <div class="px-2">
+                  <div class="font-display font-bold text-base sm:text-lg text-sky-400 leading-7">FDM</div>
+                  <div class="font-mono text-[10px] text-slate-400 uppercase mt-0.5">ВИРОБНИЦТВО</div>
+                </div>
+                <div class="px-2">
+                  <div class="h-7 flex items-center justify-center text-white">
+                    <svg class="w-8 sm:w-9 h-5" viewBox="0 0 36 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Індивідуально">
+                      <path d="M9.5 3.2C5.8 3.2 2.8 5.8 2.8 9C2.8 12.2 5.8 14.8 9.5 14.8C13.8 14.8 16.2 9 18 9C19.8 9 22.2 3.2 26.5 3.2C30.2 3.2 33.2 5.8 33.2 9C33.2 12.2 30.2 14.8 26.5 14.8C22.2 14.8 19.8 9 18 9C16.2 9 13.8 3.2 9.5 3.2Z" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div class="font-mono text-[10px] text-slate-400 uppercase mt-0.5">ІНДИВІДУАЛЬНО</div>
+                </div>
+              </div>
+
+              <!-- Floating Callout Badge -->
+              <div class="mt-4 flex items-center gap-3 p-3 rounded-xl bg-[#021024]/95 border border-sky-400/25">
+                <div class="w-9 h-9 rounded-lg bg-sky-500/15 border border-sky-400/30 flex items-center justify-center text-sky-400 shrink-0">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                    <line x1="12" y1="22.08" x2="12" y2="12"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-white">Нестандартні завдання</div>
+                  <div class="text-[11px] text-slate-400">Рішення та геометрія під реальні задачі</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PROCESS STRIP (01 / 02 / 03)
+         ===================================================================== -->
+    <section class="border-y border-sky-400/15 bg-[#03152e]/60 backdrop-blur-sm reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div class="flex items-start gap-4">
+            <span class="font-mono font-bold text-sm text-sky-400 pt-0.5">01</span>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Спочатку розбираємося в задачі та умовах експлуатації деталі, а не просто бездумно друкуємо файл.
+            </p>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="font-mono font-bold text-sm text-sky-400 pt-0.5">02</span>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Працюємо як з вашими готовими 3D-моделями, так і створюємо нові з нуля за зразком, уламком чи ескізом.
+            </p>
+          </div>
+          <div class="flex items-start gap-4">
+            <span class="font-mono font-bold text-sm text-sky-400 pt-0.5">03</span>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Виготовляємо одиничні вироби й невеликі серії. Швидка відправка Новою Поштою по Україні та за кордон.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SERVICES SECTION ("ТОЧНЕ РІШЕННЯ ДЛЯ ВАШОЇ ЗАДАЧІ")
+         ===================================================================== -->
+    <section id="services" class="py-20 lg:py-28 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end mb-14 reveal-on-scroll">
+          <div class="lg:col-span-7 space-y-3">
+            <div class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-sky-400">
+              <span class="w-6 h-[1px] bg-sky-400"></span>
+              <span>ЩО МИ СТВОРЮЄМО</span>
+            </div>
+            <h2 class="font-display font-black text-2xl sm:text-4xl lg:text-[42px] uppercase leading-[1.12] tracking-tight text-white">
+              ТОЧНЕ РІШЕННЯ<br />
+              <span class="text-ice-gradient">ДЛЯ ВАШОЇ ЗАДАЧІ</span>
+            </h2>
+          </div>
+          <div class="lg:col-span-5">
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Від маленької шестерні чи рідкісної кліпси до партії фірмових виробів. Поєднуємо цифрове 3D-проєктування, практичний інженерний підхід та акуратне виготовлення.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4 Services Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Service 01 -->
+          <div class="tech-card corner-mark rounded-2xl p-6 flex flex-col justify-between reveal-on-scroll">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-400/25 flex items-center justify-center text-sky-400 mb-6">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+              </div>
+              <div class="font-mono text-[11px] text-sky-400 uppercase tracking-wider mb-2">01 / ВІДНОВЛЕННЯ</div>
+              <h3 class="font-display font-bold text-lg text-white mb-3 leading-snug">
+                Відновлення та автодеталі
+              </h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Зняті з виробництва запчастини, шестерні, редуктори, кронштейни, кріплення фар, заглушки та пластикові елементи салону.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center flex-nowrap whitespace-nowrap gap-1.5 font-mono text-[10px] text-slate-400">
+              <span class="px-2 py-0.5 rounded bg-white/5">За зразком</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">Кріплення</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">Шестерні</span>
+            </div>
+          </div>
+
+          <!-- Service 02 -->
+          <div class="tech-card corner-mark rounded-2xl p-6 flex flex-col justify-between reveal-on-scroll reveal-delay-1">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-400/25 flex items-center justify-center text-sky-400 mb-6">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M2 12h20M12 2v20M20 16l-4-4 4-4M4 8l4 4-4 4"/>
+                </svg>
+              </div>
+              <div class="font-mono text-[11px] text-sky-400 uppercase tracking-wider mb-2">02 / ПРОЄКТУВАННЯ</div>
+              <h3 class="font-display font-bold text-lg text-white mb-3 leading-snug">
+                3D-моделювання та реверс-інжиніринг
+              </h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Створення точної 3D-моделі за фізичним зразком, зламаним уламком, фотографіями з розмірами чи технічним кресленням.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center flex-nowrap whitespace-nowrap gap-1.5 font-mono text-[10px] text-slate-400">
+              <span class="px-2 py-0.5 rounded bg-white/5">CAD / STEP</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">STL</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">Посилення вузлів</span>
+            </div>
+          </div>
+
+          <!-- Service 03 -->
+          <div class="tech-card corner-mark rounded-2xl p-6 flex flex-col justify-between reveal-on-scroll reveal-delay-2">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-400/25 flex items-center justify-center text-sky-400 mb-6">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </div>
+              <div class="font-mono text-[11px] text-sky-400 uppercase tracking-wider mb-2">03 / СЕРІЇ</div>
+              <h3 class="font-display font-bold text-lg text-white mb-3 leading-snug">
+                Дрібносерійне виробництво
+              </h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Виготовлення партій деталей і готових виробів для компаній, майстерень, магазинів і стартапів без витрат на прес-форми.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center flex-nowrap whitespace-nowrap gap-1.5 font-mono text-[10px] text-slate-400">
+              <span class="px-2 py-0.5 rounded bg-white/5">Від 5 до 500+ шт</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">Повторюваність</span>
+            </div>
+          </div>
+
+          <!-- Service 04 -->
+          <div class="tech-card corner-mark rounded-2xl p-6 flex flex-col justify-between reveal-on-scroll reveal-delay-3">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-400/25 flex items-center justify-center text-sky-400 mb-6">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <div class="font-mono text-[11px] text-sky-400 uppercase tracking-wider mb-2">04 / ВЛАСНІ ВИРОБИ</div>
+              <h3 class="font-display font-bold text-lg text-white mb-3 leading-snug">
+                Декор, корпуси та подарунки
+              </h3>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Дизайнерські предмети інтер’єру, вази, кастомні аксесуари, сувеніри, підставки та захисні корпуси для електроніки.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center flex-nowrap whitespace-nowrap gap-1.5 font-mono text-[10px] text-slate-400">
+              <span class="px-2 py-0.5 rounded bg-white/5">Декор і світло</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">Корпуси</span>
+              <span class="px-2 py-0.5 rounded bg-white/5">Подарунки</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Inline Quick Consultation Banner -->
+        <div class="mt-10 rounded-2xl bg-gradient-to-r from-[#071c3b] via-[#0a2752] to-[#071c3b] border border-sky-400/25 p-6 sm:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 reveal-on-scroll">
+          <div>
+            <div class="font-display font-bold text-base sm:text-lg text-white">Є ідея або зламаний зразок, але немає готової 3D-моделі?</div>
+            <p class="text-sm text-slate-300 mt-1">Надішліть фото у Telegram — підкажемо, як краще реалізувати деталь під ваші задачі.</p>
+          </div>
+          <a href="https://t.me/Samurai_AIF" target="_blank" rel="noopener noreferrer"
+             class="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 hover:bg-white text-white hover:text-[#021024] border border-white/20 font-display font-bold text-xs uppercase tracking-wider transition-all">
+            <span>Обговорити проєкт</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         VISUAL SHOWCASE ("ПРАКТИЧНІ РІШЕННЯ" — FBS-01 to FBS-04)
+         ===================================================================== -->
+    <section id="showcase" class="py-20 lg:py-24 border-t border-sky-400/15 bg-[#020e20]/70">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end mb-14 reveal-on-scroll">
+          <div class="lg:col-span-7 space-y-3">
+            <div class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-sky-400">
+              <span class="w-6 h-[1px] bg-sky-400"></span>
+              <span>ВІД ЗАДУМУ ДО РЕЗУЛЬТАТУ</span>
+            </div>
+            <h2 class="font-display font-black text-2xl sm:text-4xl lg:text-[42px] uppercase leading-[1.12] tracking-tight text-white">
+              ПРАКТИЧНІ <span class="text-ice-gradient">РІШЕННЯ</span>
+            </h2>
+          </div>
+          <div class="lg:col-span-5">
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Кожен виріб починається із конкретної задачі. Натисніть на будь-який напрям нижче, щоб переглянути приклади типових замовлень.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4 Illustrated Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- FBS-01: Auto & Tech Parts -->
+          <div onclick="openSpecModal(0)" class="tech-card rounded-2xl overflow-hidden cursor-pointer group flex flex-col justify-between reveal-on-scroll">
+            <div class="p-5 bg-gradient-to-b from-[#0a2346]/60 to-[#041226] border-b border-sky-400/15 relative h-60 flex flex-col justify-between">
+              <div class="flex justify-between items-center font-mono text-[10px] text-slate-400">
+                <span>ДЕТАЛЬ / 001</span>
+                <span class="text-sky-400 group-hover:translate-x-0.5 transition-transform">ДЕТАЛЬНІШЕ →</span>
+              </div>
+              <!-- Vector Illustration: Precision Gear -->
+              <div class="my-auto flex items-center justify-center">
+                <svg class="w-32 h-32 group-hover:scale-105 transition-transform duration-500" viewBox="0 0 160 160">
+                  <defs>
+                    <radialGradient id="gearGlow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.3" />
+                      <stop offset="100%" stop-color="#021024" stop-opacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <circle cx="80" cy="80" r="68" fill="url(#gearGlow)" />
+                  <circle cx="80" cy="80" r="44" fill="none" stroke="#93c5fd" stroke-width="14" stroke-dasharray="14 8" />
+                  <circle cx="80" cy="80" r="38" fill="#1e3a5f" stroke="#e2e8f0" stroke-width="2" />
+                  <circle cx="80" cy="80" r="18" fill="#041226" stroke="#38bdf8" stroke-width="2.5" />
+                  <circle cx="80" cy="80" r="8" fill="#041226" stroke="#93c5fd" stroke-width="1.5" />
+                  <line x1="20" y1="132" x2="140" y2="132" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3 4" />
+                </svg>
+              </div>
+              <div class="text-right font-mono text-[10px] text-sky-400">FBS—01</div>
+            </div>
+            <div class="p-6">
+              <div class="font-mono text-[10px] text-sky-400 uppercase tracking-wider mb-1.5">АВТОМОБІЛІ ТА ТЕХНІКА</div>
+              <h3 class="font-display font-bold text-base text-white mb-2">Деталі на заміну</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Коли оригінал неможливо знайти, він продається лише в зборі з дорогим вузлом або його більше не виробляють.
+              </p>
+            </div>
+          </div>
+
+          <!-- FBS-02: Sculptural Decor & Gifts -->
+          <div onclick="openSpecModal(1)" class="tech-card rounded-2xl overflow-hidden cursor-pointer group flex flex-col justify-between reveal-on-scroll reveal-delay-1">
+            <div class="p-5 bg-gradient-to-b from-[#0a2346]/60 to-[#041226] border-b border-sky-400/15 relative h-60 flex flex-col justify-between">
+              <div class="flex justify-between items-center font-mono text-[10px] text-slate-400">
+                <span>ФОРМА / 002</span>
+                <span class="text-sky-400 group-hover:translate-x-0.5 transition-transform">ДЕТАЛЬНІШЕ →</span>
+              </div>
+              <!-- Vector Illustration: Sculptural Vase -->
+              <div class="my-auto flex items-center justify-center">
+                <svg class="w-32 h-32 group-hover:scale-105 transition-transform duration-500" viewBox="0 0 160 160">
+                  <ellipse cx="80" cy="134" rx="36" ry="7" fill="rgba(56,189,248,0.2)" />
+                  <path d="M62,28 C68,54 46,84 54,114 C60,130 100,130 106,114 C114,84 92,54 98,28 Z" fill="#1e4273" stroke="#e2e8f0" stroke-width="1.8" />
+                  <ellipse cx="80" cy="28" rx="18" ry="5" fill="#06152d" stroke="#93c5fd" stroke-width="1.5" />
+                  <path d="M60,55 Q80,63 100,55" fill="none" stroke="#7dd3fc" stroke-width="1" />
+                  <path d="M54,82 Q80,92 106,82" fill="none" stroke="#7dd3fc" stroke-width="1" />
+                  <path d="M54,106 Q80,116 106,106" fill="none" stroke="#7dd3fc" stroke-width="1" />
+                </svg>
+              </div>
+              <div class="text-right font-mono text-[10px] text-sky-400">FBS—02</div>
+            </div>
+            <div class="p-6">
+              <div class="font-mono text-[10px] text-sky-400 uppercase tracking-wider mb-1.5">ДЕКОР І ПРЕДМЕТИ</div>
+              <h3 class="font-display font-bold text-base text-white mb-2">Форма з характером</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Авторські речі для сучасного простору, геометричні вази, світильники, подарунки та персональні проєкти.
+              </p>
+            </div>
+          </div>
+
+          <!-- FBS-03: Enclosures & Mounts -->
+          <div onclick="openSpecModal(2)" class="tech-card rounded-2xl overflow-hidden cursor-pointer group flex flex-col justify-between reveal-on-scroll reveal-delay-2">
+            <div class="p-5 bg-gradient-to-b from-[#0a2346]/60 to-[#041226] border-b border-sky-400/15 relative h-60 flex flex-col justify-between">
+              <div class="flex justify-between items-center font-mono text-[10px] text-slate-400">
+                <span>КОРПУС / 003</span>
+                <span class="text-sky-400 group-hover:translate-x-0.5 transition-transform">ДЕТАЛЬНІШЕ →</span>
+              </div>
+              <!-- Vector Illustration: Isometric Enclosure -->
+              <div class="my-auto flex items-center justify-center">
+                <svg class="w-32 h-32 group-hover:scale-105 transition-transform duration-500" viewBox="0 0 160 160">
+                  <polygon points="80,36 134,62 80,88 26,62" fill="#234b7e" stroke="#e2e8f0" stroke-width="1.5" />
+                  <polygon points="80,46 114,62 80,78 46,62" fill="#06152d" stroke="#7dd3fc" stroke-width="1.2" />
+                  <polygon points="26,62 80,88 80,126 26,100" fill="#132f57" stroke="#93c5fd" stroke-width="1.5" />
+                  <polygon points="134,62 80,88 80,126 134,100" fill="#1b3f70" stroke="#bae6fd" stroke-width="1.5" />
+                  <line x1="42" y1="84" x2="64" y2="95" stroke="#38bdf8" stroke-width="2" />
+                  <line x1="42" y1="92" x2="58" y2="100" stroke="#38bdf8" stroke-width="2" />
+                </svg>
+              </div>
+              <div class="text-right font-mono text-[10px] text-sky-400">FBS—03</div>
+            </div>
+            <div class="p-6">
+              <div class="font-mono text-[10px] text-sky-400 uppercase tracking-wider mb-1.5">ПРОТОТИПУВАННЯ</div>
+              <h3 class="font-display font-bold text-base text-white mb-2">Корпуси та кріплення</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Перевірка форми, точних посадкових місць і функціональності приладів перед запуском або серійним монтажем.
+              </p>
+            </div>
+          </div>
+
+          <!-- FBS-04: Batch Production -->
+          <div onclick="openSpecModal(3)" class="tech-card rounded-2xl overflow-hidden cursor-pointer group flex flex-col justify-between reveal-on-scroll reveal-delay-3">
+            <div class="p-5 bg-gradient-to-b from-[#0a2346]/60 to-[#041226] border-b border-sky-400/15 relative h-60 flex flex-col justify-between">
+              <div class="flex justify-between items-center font-mono text-[10px] text-slate-400">
+                <span>СЕРІЯ / 004</span>
+                <span class="text-sky-400 group-hover:translate-x-0.5 transition-transform">ДЕТАЛЬНІШЕ →</span>
+              </div>
+              <!-- Vector Illustration: Batch Cubes -->
+              <div class="my-auto flex items-center justify-center">
+                <svg class="w-32 h-32 group-hover:scale-105 transition-transform duration-500" viewBox="0 0 160 160">
+                  <g transform="translate(22, 62)">
+                    <polygon points="24,0 48,12 24,24 0,12" fill="#2b5a94" stroke="#e2e8f0" stroke-width="1.2" />
+                    <polygon points="0,12 24,24 24,50 0,38" fill="#132f57" stroke="#93c5fd" stroke-width="1.2" />
+                    <polygon points="48,12 24,24 24,50 48,38" fill="#1d4478" stroke="#bae6fd" stroke-width="1.2" />
+                  </g>
+                  <g transform="translate(64, 38)">
+                    <polygon points="24,0 48,12 24,24 0,12" fill="#2b5a94" stroke="#e2e8f0" stroke-width="1.2" />
+                    <polygon points="0,12 24,24 24,50 0,38" fill="#132f57" stroke="#93c5fd" stroke-width="1.2" />
+                    <polygon points="48,12 24,24 24,50 48,38" fill="#1d4478" stroke="#bae6fd" stroke-width="1.2" />
+                  </g>
+                  <g transform="translate(88, 72)">
+                    <polygon points="24,0 48,12 24,24 0,12" fill="#38bdf8" fill-opacity="0.45" stroke="#ffffff" stroke-width="1.3" />
+                    <polygon points="0,12 24,24 24,50 0,38" fill="#163a69" stroke="#7dd3fc" stroke-width="1.3" />
+                    <polygon points="48,12 24,24 24,50 48,38" fill="#24538c" stroke="#bae6fd" stroke-width="1.3" />
+                  </g>
+                  <line x1="20" y1="132" x2="140" y2="132" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3 4" />
+                </svg>
+              </div>
+              <div class="text-right font-mono text-[10px] text-sky-400">FBS—04</div>
+            </div>
+            <div class="p-6">
+              <div class="font-mono text-[10px] text-sky-400 uppercase tracking-wider mb-1.5">ДЛЯ БІЗНЕСУ</div>
+              <h3 class="font-display font-bold text-base text-white mb-2">Виробництво партіями</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Повторювані брендовані або технічні вироби за погодженими розмірами та строками.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Instagram Portfolio Banner -->
+        <div class="mt-10 tech-card rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 reveal-on-scroll">
+          <div class="flex items-start sm:items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-sky-500/15 border border-sky-400/30 flex items-center justify-center text-sky-400 shrink-0">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-base sm:text-lg text-white">Більше процесу та готових виробів</h3>
+              <p class="text-sm text-slate-300 mt-0.5">Перегляньте свіжі відео проєктів, краш-тести та таймлапси виробництва у нашому Instagram.</p>
+              <a href="https://www.instagram.com/forge_by_stef/" target="_blank" rel="noopener noreferrer" class="inline-block font-mono text-xs text-sky-400 hover:underline mt-1">
+                @forge_by_stef
+              </a>
+            </div>
+          </div>
+
+          <a href="https://www.instagram.com/forge_by_stef/" target="_blank" rel="noopener noreferrer"
+             class="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-[#021024] hover:bg-sky-400 font-display font-bold text-xs uppercase tracking-wider transition-all">
+            <span>Перейти в Instagram</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CONVERSION & INTERACTIVE BRIEF BUILDER ("Є ЗАДАЧА? ЗНАЙДЕМО РІШЕННЯ.")
+         ===================================================================== -->
+    <section id="order" class="py-20 lg:py-28 border-t border-sky-400/15 relative overflow-hidden">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 reveal-on-scroll">
+        
+        <div class="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-sky-400 mb-4">
+          <span class="w-6 h-[1px] bg-sky-400"></span>
+          <span>ПОЧНІМО З ВАШОЇ ІДЕЇ</span>
+          <span class="w-6 h-[1px] bg-sky-400"></span>
+        </div>
+
+        <h2 class="font-display font-black text-3xl sm:text-5xl uppercase leading-[1.1] tracking-tight text-white mb-5">
+          Є ЗАДАЧА?<br />
+          <span class="text-ice-gradient">ЗНАЙДЕМО РІШЕННЯ.</span>
+        </h2>
+
+        <p class="text-base sm:text-lg text-slate-300 max-w-xl mx-auto leading-relaxed mb-10">
+          Надішліть фото, креслення або файл — обговоримо можливості, зорієнтуємо за термінами та вартістю виготовлення.
+        </p>
+
+        <!-- Optional Quick Task Builder (Helps user compose a message in 2 clicks) -->
+        <div class="tech-card rounded-2xl p-6 sm:p-8 text-left mb-10 border border-sky-400/25">
+          <div class="flex items-center justify-between flex-wrap gap-2 mb-4">
+            <span class="font-mono text-xs uppercase tracking-wider text-sky-300">⚡ Швидкий конструктор запиту (за бажанням):</span>
+            <span class="font-mono text-[11px] text-slate-400">Оберіть пункти і скопіюйте готовий текст для чату</span>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-mono text-slate-400 mb-2">1. Що потрібно зробити?</label>
+              <div class="flex flex-wrap gap-2" id="taskTypeGroup">
+                <button type="button" onclick="selectTaskType(this, 'Відновити / надрукувати деталь')" class="task-chip px-3.5 py-2 rounded-lg text-xs font-semibold bg-sky-500/20 text-sky-300 border border-sky-400/50 transition">
+                  ⚙ Відновити / надрукувати деталь
+                </button>
+                <button type="button" onclick="selectTaskType(this, 'Декор / подарунок / сувенір')" class="task-chip px-3.5 py-2 rounded-lg text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-sky-400/40 transition">
+                  🏺 Декор / подарунок
+                </button>
+                <button type="button" onclick="selectTaskType(this, '3D-моделювання за зразком')" class="task-chip px-3.5 py-2 rounded-lg text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-sky-400/40 transition">
+                  📐 Змоделювати за зразком
+                </button>
+                <button type="button" onclick="selectTaskType(this, 'Дрібносерійне замовлення')" class="task-chip px-3.5 py-2 rounded-lg text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-sky-400/40 transition">
+                  📦 Дрібна серія виробів
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-400 mb-2">2. Що є в наявності?</label>
+              <div class="flex flex-wrap gap-2" id="taskSourceGroup">
+                <button type="button" onclick="selectTaskSource(this, 'є фото деталі / розміри')" class="source-chip px-3.5 py-2 rounded-lg text-xs font-semibold bg-sky-500/20 text-sky-300 border border-sky-400/50 transition">
+                  📸 Є фото деталі / розміри
+                </button>
+                <button type="button" onclick="selectTaskSource(this, 'є готова 3D-модель (STL/STEP)')" class="source-chip px-3.5 py-2 rounded-lg text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-sky-400/40 transition">
+                  💾 Є готова 3D-модель (STL/STEP)
+                </button>
+                <button type="button" onclick="selectTaskSource(this, 'можу передати фізичний зразок / уламок')" class="source-chip px-3.5 py-2 rounded-lg text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-sky-400/40 transition">
+                  📦 Можу передати зразок / уламок
+                </button>
+              </div>
+            </div>
+
+            <!-- Generated Preview Box -->
+            <div class="mt-4 p-3.5 rounded-xl bg-[#021024] border border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+              <div id="generatedBriefText" class="text-xs sm:text-sm text-slate-200 font-mono">
+                "Вітаю! Хочу замовити у FORGE BY STEF: Відновити / надрукувати деталь (є фото деталі / розміри). Підкажіть по вартості та термінах."
+              </div>
+              <button type="button" onclick="copyBriefAndNotify()" class="shrink-0 px-4 py-2 rounded-lg bg-sky-400 hover:bg-sky-300 text-[#021024] font-mono font-bold text-xs transition">
+                Скопіювати текст
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Primary Direct Messenger Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://t.me/Samurai_AIF" target="_blank" rel="noopener noreferrer"
+             class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 rounded-full bg-white text-[#021024] font-display font-bold text-sm uppercase tracking-wider hover:bg-sky-400 transition-all duration-300 shadow-[0_0_35px_rgba(255,255,255,0.22)]">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+            </svg>
+            <span>Написати в Telegram</span>
+            <span>↗</span>
+          </a>
+
+          <a href="https://www.instagram.com/forge_by_stef/" target="_blank" rel="noopener noreferrer"
+             class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-9 py-4 rounded-full bg-[#071c3b] hover:bg-sky-500/15 text-white border border-sky-400/30 hover:border-sky-400 font-display font-bold text-sm uppercase tracking-wider transition-all duration-300">
+            <svg class="w-5 h-5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>Написати в Instagram</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <p class="mt-6 text-xs text-slate-400 font-mono">
+          📍 Івано-Франківськ / Яремче &nbsp;•&nbsp; 📦 Доставка Новою Поштою по Україні та відправка за кордон
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER (WHITE BACKGROUND, 3 COLUMNS, TRUE-PROPORTION LOGO)
+       ===================================================================== -->
+  <footer class="bg-white text-[#021024] border-t border-slate-200 reveal-on-scroll">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-10 border-b border-slate-200">
+        
+        <!-- Left Column: True-Proportion FORGE BY STEF Logo + Headline & Subtext -->
+        <div class="md:col-span-5 flex items-center gap-5">
+          <svg class="h-20 w-auto shrink-0 text-[#021024]" viewBox="70 155 860 770" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="FORGE BY STEF">
+            <!-- FORGE BY (True full height: y=170..282) -->
+            <path d="M106,172 H186 V196 H132 V217 H178 V240 H132 V282 H106 Z" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M258,170 C291,170 314,194 314,226 C314,258 291,284 258,284 C225,284 202,258 202,226 C202,194 225,170 258,170 Z M258,194 C239,194 228,207 228,226 C228,245 239,260 258,260 C277,260 288,245 288,226 C288,207 277,194 258,194 Z" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M333,172 H386 C409,172 423,186 423,208 C423,224 414,236 398,241 L424,282 H395 L373,244 H359 V282 H333 Z M359,195 V221 H383 C393,221 398,216 398,208 C398,200 393,195 383,195 Z" />
+            <path d="M493,170 C520,170 537,183 542,204 H516 C511,196 503,194 493,194 C474,194 464,207 464,226 C464,245 474,260 493,260 C509,260 519,251 520,238 H491 V218 H542 V235 C542,265 522,284 493,284 C460,284 438,258 438,226 C438,194 460,170 493,170 Z" />
+            <path d="M564,172 H646 V196 H590 V215 H638 V238 H590 V258 H646 V282 H564 Z" />
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M704,172 H758 C778,172 790,183 790,200 C790,211 784,219 774,223 C787,226 794,236 794,250 C794,270 780,282 759,282 H704 Z M729,194 V215 H753 C761,215 765,211 765,204.5 C765,198 761,194 753,194 Z M729,236 V259 H756 C764,259 769,254 769,247.5 C769,241 764,236 756,236 Z" />
+            <path d="M803,172 H831 L851,215 L871,172 H899 L863.5,240 V282 H838.5 V240 Z" />
+
+            <!-- STEF -->
+            <path d="M279,408 C275,349 237,320 183,320 C126,320 90,353 90,408 C90,453 116,478 166,491 L199,500 C220,506 229,515 229,532 C229,551 213,564 187,564 C157,564 139,548 136,521 H83 C86,584 125,626 188,626 C249,626 286,586 286,528 C286,480 259,454 204,439 L172,430 C152,424 144,416 144,400 C144,383 159,371 183,371 C209,371 224,384 227,408 Z" />
+            <path d="M302,325 H507 V386 H433 V621 H376 V386 H302 Z" />
+            <path d="M531,325 H712 V385 H588 V442 H700 V501 H588 V561 H712 V621 H531 Z" />
+            <path d="M739,325 H916 V385 H796 V447 H904 V506 H796 V621 H739 Z" />
+
+            <!-- Geometric Anvil Wings & Mountain Emblem -->
+            <polygon points="83,675 369,675 327,737 83,737" />
+            <polygon points="631,675 916,675 916,737 672,737" />
+            <polygon points="411,663 554,912 269,912 308,844 441,844 411,791 393,823 320,823" />
+            <polygon points="585,663 677,823 623,823 558,710" />
+            <polygon points="545,734 609,844 690,844 729,912 587,912 515,786" />
+          </svg>
+          <div>
+            <div class="font-display font-bold text-sm sm:text-base text-[#021024] mb-1">
+              Створюємо те, що не можна купити.
+            </div>
+            <p class="text-xs sm:text-sm text-slate-600 leading-snug max-w-xs">
+              Від задуму до готового виробу — з увагою до кожної деталі.
+            </p>
+          </div>
+        </div>
+
+        <!-- Middle Column: Location & Delivery -->
+        <div class="md:col-span-4 space-y-3 text-sm text-slate-700">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-4 h-4 text-[#021024] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Івано-Франківськ / Яремче</span>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <svg class="w-4 h-4 text-[#021024] shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+            <span>Доставка Новою Поштою по Україні та відправка за кордон</span>
+          </div>
+        </div>
+
+        <!-- Right Column: Stacked Rectangular Telegram & Instagram Buttons -->
+        <div class="md:col-span-3 flex flex-col gap-2.5">
+          <a href="https://t.me/Samurai_AIF" target="_blank" rel="noopener noreferrer"
+             class="w-full py-3 px-5 bg-[#021024] text-white font-bold text-sm flex items-center justify-center gap-2.5 hover:bg-slate-800 transition-colors">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+            </svg>
+            <span>Telegram</span>
+          </a>
+          <a href="https://www.instagram.com/forge_by_stef/" target="_blank" rel="noopener noreferrer"
+             class="w-full py-3 px-5 bg-white text-[#021024] border-2 border-[#021024] font-bold text-sm flex items-center justify-center gap-2.5 hover:bg-slate-100 transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="pt-6 text-center text-xs text-slate-500">
+        © <span id="yearSpan">2026</span> FORGE BY STEF. Усі права захищено.
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       SPECIFICATION MODAL FOR SHOWCASE CARDS (FBS-01 to FBS-04)
+       ===================================================================== -->
+  <div id="specModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md">
+    <div class="tech-card rounded-2xl max-w-lg w-full p-6 sm:p-8 border border-sky-400/40 relative">
+      <button onclick="closeSpecModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 text-slate-300 flex items-center justify-center font-mono">
+        ✕
+      </button>
+      <div id="modalCode" class="font-mono text-xs text-sky-400 uppercase tracking-widest mb-2">FBS—01</div>
+      <h3 id="modalTitle" class="font-display font-bold text-xl sm:text-2xl text-white mb-3">Деталі на заміну</h3>
+      <p id="modalDesc" class="text-sm text-slate-300 leading-relaxed mb-5"></p>
+      
+      <div class="bg-[#021024] rounded-xl p-4 border border-white/10 mb-6">
+        <div class="font-mono text-[11px] text-sky-300 uppercase mb-2">Що найчастіше замовляють у цій категорії:</div>
+        <ul id="modalList" class="text-xs sm:text-sm text-slate-300 space-y-1.5 list-disc list-inside"></ul>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="https://t.me/Samurai_AIF" target="_blank" rel="noopener noreferrer"
+           class="flex-1 inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-full bg-white text-[#021024] hover:bg-sky-400 font-display font-bold text-xs uppercase tracking-wider transition">
+          <span>Замовити в Telegram</span>
+          <span>↗</span>
+        </a>
+        <button onclick="closeSpecModal()" class="py-3.5 px-6 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 font-mono text-xs">
+          Закрити
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification for Clipboard Copy -->
+  <div id="toastNotice" class="fixed bottom-6 right-6 z-50 hidden items-center gap-3 px-5 py-3.5 rounded-xl bg-white text-[#021024] shadow-2xl font-semibold text-sm border-l-4 border-sky-500">
+    <span>✅ Текст скопійовано! Тепер вставте його в Telegram-чат.</span>
+  </div>
+
+  <!-- =====================================================================
+       INTERACTIVE JAVASCRIPT LOGIC
+       ===================================================================== -->
+  <script>
+    // Set current year
+    document.getElementById('yearSpan').textContent = new Date().getFullYear();
+
+    // Smooth Scroll Reveal Observer
+    document.addEventListener('DOMContentLoaded', () => {
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(el => observer.observe(el));
+    });
+
+    // 1. Interactive CAD Viewport Model Switcher
+    const cadSpecs = [
+      { code: 'МОД / 01 — КРОНШТЕЙН & ПРИВІД', mat: 'ТИП: ВІДНОВЛЕННЯ ЗРАЗКА', tol: 'КОНТРОЛЬ ГЕОМЕТРІЇ' },
+      { code: 'МОД / 02 — ІНТЕР’ЄРНА ФОРМА', mat: 'ТИП: ДИЗАЙН ТА ДЕКОР', tol: 'ЕСТЕТИКА ПОВЕРХНІ' },
+      { code: 'МОД / 03 — ШЕСТЕРНЯ РЕДУКТОРА', mat: 'ТИП: РЕВЕРС-ІНЖИНІРИНГ', tol: 'ТОЧНА ПОСАДКА' },
+      { code: 'МОД / 04 — СЕРІЙНА ПАРТІЯ', mat: 'ТИП: ДРІБНА СЕРІЯ', tol: 'ТИРАЖ: 10–500+ ШТ' }
+    ];
+
+    function switchCadModel(index) {
+      for (let i = 0; i < 4; i++) {
+        const view = document.getElementById('cadView' + i);
+        const tab = document.getElementById('cadTab' + i);
+        if (i === index) {
+          view.classList.remove('hidden');
+          tab.className = 'cad-tab py-2 px-1 rounded-lg bg-sky-500/20 text-sky-300 border border-sky-400/40 font-semibold transition';
+        } else {
+          view.classList.add('hidden');
+          tab.className = 'cad-tab py-2 px-1 rounded-lg text-slate-400 hover:text-white transition';
+        }
+      }
+      document.getElementById('hudModelCode').textContent = cadSpecs[index].code;
+      document.getElementById('hudMaterial').textContent = cadSpecs[index].mat;
+      document.getElementById('hudTolerance').textContent = cadSpecs[index].tol;
+    }
+
+    // 2. Showcase Spec Modal Data (Real FORGE BY STEF projects)
+    const showcaseData = [
+      {
+        code: 'FBS—01 / АВТОМОБІЛІ ТА ТЕХНІКА',
+        title: 'Деталі на заміну та автокомпоненти',
+        desc: 'Відновлюємо зламані, рідкісні або зняті з виробництва деталі за зразком чи уламком. Виготовляємо кастомні елементи для авто та техніки.',
+        items: [
+          'Кріплення омивачів фар, дефлекторів, підлокітників, заглушки та кліпси для автокилимків',
+          'Відновлення центруючих і декоративних кілець на раритетні автомобільні диски',
+          'Захисні кришки та решітки для динаміків і аудіосистем (зокрема кастомні кришки Alpine), автошильдики та емблеми на решітку радіатора',
+          'Регулятори, кнопки та клавіші (до авто, рацій, садового пилососа), а також шестерні для принтерів і побутової техніки'
+        ]
+      },
+      {
+        code: 'FBS—02 / ДЕКОР І ПРЕДМЕТИ',
+        title: 'Форма з характером та кастомні аксесуари',
+        desc: 'Створюємо індивідуальні предмети інтер’єру, стильні аксесуари та персоналізовані подарунки з унікальною геометрією.',
+        items: [
+          'Дизайнерські світильники, абажури та літофанія (об’ємні світлові картини з фотографій на просвіт)',
+          'Індивідуальні підставки для наручних годинників, геймпадів (джойстиків) та гаджетів',
+          'Статуетки, фігурки, кастомні індивідуальні попільнички та предмети декору',
+          'Ексклюзивні шильдики, емблеми та персональні сувеніри під замовлення'
+        ]
+      },
+      {
+        code: 'FBS—03 / ПРОТОТИПУВАННЯ',
+        title: 'Корпуси, кріплення та спецпроєкти',
+        desc: 'Проєктуємо та друкуємо надійні корпуси, тримачі й функціональне оснащення під точні розміри вашого обладнання.',
+        items: [
+          'Корпуси для акумуляторів, зарядних пристроїв, мікрофонів та кастомної електроніки',
+          'Оснащення для фото- та відеотехніки — зокрема захисні клітки (ріги) для професійних камер',
+          'Кріплення та органайзери для робочого інструменту в майстерню чи гараж',
+          'Практичні кріплення для дому та вулиці (наприклад, посилені тримачі для ринви та комунікацій)'
+        ]
+      },
+      {
+        code: 'FBS—04 / ДЛЯ БІЗНЕСУ',
+        title: 'Виробництво партіями та рішення для закладів',
+        desc: 'Виготовляємо дрібні серії виробів і специфічні комплектуючі для HoReCa, майстерень, сервісів і локальних брендів.',
+        items: [
+          'Технічні рішення для ресторанів та кав’ярень (відновлення специфічних гайок для фільтрів, підставки для льодогенераторів)',
+          'Дрібні серії корпусів для акумуляторів, зарядок, рацій та приладів',
+          'Серійне виготовлення фірмових шильдиків, емблем, підставок і брендованих аксесуарів',
+          'Комплекти кріплень, заглушок, кнопок і нестандартної фурнітури за погодженими розмірами'
+        ]
+      }
+    ];
+
+    function openSpecModal(idx) {
+      const data = showcaseData[idx];
+      document.getElementById('modalCode').textContent = data.code;
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalDesc').textContent = data.desc;
+      const listEl = document.getElementById('modalList');
+      listEl.innerHTML = data.items.map(item => `<li>${item}</li>`).join('');
+      const modal = document.getElementById('specModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeSpecModal() {
+      const modal = document.getElementById('specModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // 3. Interactive Brief Builder Logic
+    let currentTaskType = 'Відновити / надрукувати деталь';
+    let currentTaskSource = 'є фото деталі / розміри';
+
+    function updateBriefPreview() {
+      const text = `Вітаю! Хочу замовити у FORGE BY STEF: ${currentTaskType} (${currentTaskSource}). Підкажіть по вартості та термінах.`;
+      document.getElementById('generatedBriefText').textContent = `"${text}"`;
+    }
+
+    function selectTaskType(btn, val) {
+      currentTaskType = val;
+      document.querySelectorAll('#taskTypeGroup .task-chip').forEach(el => {
+        el.className = 'task-chip px-3.5 py-2 rounded-lg text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-sky-400/40 transition';
+      });
+      btn.className = 'task-chip px-3.5 py-2 rounded-lg text-xs font-semibold bg-sky-500/20 text-sky-300 border border-sky-400/50 transition';
+      updateBriefPreview();
+    }
+
+    function selectTaskSource(btn, val) {
+      currentTaskSource = val;
+      document.querySelectorAll('#taskSourceGroup .source-chip').forEach(el => {
+        el.className = 'source-chip px-3.5 py-2 rounded-lg text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-sky-400/40 transition';
+      });
+      btn.className = 'source-chip px-3.5 py-2 rounded-lg text-xs font-semibold bg-sky-500/20 text-sky-300 border border-sky-400/50 transition';
+      updateBriefPreview();
+    }
+
+    function copyBriefAndNotify() {
+      const rawText = `Вітаю! Хочу замовити у FORGE BY STEF: ${currentTaskType} (${currentTaskSource}). Підкажіть по вартості та термінах.`;
+      const tempInput = document.createElement('textarea');
+      tempInput.value = rawText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      const toast = document.getElementById('toastNotice');
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3800);
+    }
+  </script>
+</body>
+</html>
