@@ -1310,7 +1310,32 @@
       modal.classList.add('hidden');
       modal.classList.remove('flex');
     }
+    // Закриття модального вікна клавішею ESC
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.code === 'Escape') {
+        const modal = document.getElementById('specModal');
+        if (modal && !modal.classList.contains('hidden')) {
+          closeSpecModal();
+        }
+      }
+    });
 
+    // Закриття модального вікна кліком повз нього (по темному фону)
+    (function () {
+      const modal = document.getElementById('specModal');
+      let pressedOnBackdrop = false;
+      // Запам'ятовуємо, де саме натиснули, щоб вікно не закривалось,
+      // коли користувач виділяє текст всередині і відпускає мишу поза вікном
+      modal.addEventListener('pointerdown', function (e) {
+        pressedOnBackdrop = (e.target === modal);
+      });
+      modal.addEventListener('click', function (e) {
+        if (pressedOnBackdrop && e.target === modal) {
+          closeSpecModal();
+        }
+        pressedOnBackdrop = false;
+      });
+    })();
     // 3. Interactive Brief Builder Logic
     let currentTaskType = 'Відновити / надрукувати деталь';
     let currentTaskSource = 'є фото деталі / розміри';
