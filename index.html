@@ -1446,14 +1446,24 @@
         document.querySelectorAll('img').forEach(img => img.setAttribute('draggable', 'false'));
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
+          // e.code — фізична клавіша (працює на будь-якій розкладці: укр, рос, араб., грец. тощо)
+          // e.key  — запасний варіант для латинських розкладок (Dvorak, AZERTY тощо)
+          const code = e.code || '';
+          const key = (e.key || '').toLowerCase();
+          const mod = e.ctrlKey || e.metaKey; // Ctrl (Windows/Linux) або Cmd (Mac)
+
+          const isKey = (physical, latin) => code === physical || key === latin;
+
           if (
-            e.key === 'F12' ||
-            (e.ctrlKey && e.shiftKey && ['I', 'i', 'J', 'j', 'C', 'c'].includes(e.key)) ||
-            (e.ctrlKey && ['U', 'u', 'S', 's'].includes(e.key))
+            code === 'F12' ||
+            (mod && e.shiftKey && (isKey('KeyI', 'i') || isKey('KeyJ', 'j') || isKey('KeyC', 'c'))) ||
+            (mod && e.altKey && (isKey('KeyI', 'i') || isKey('KeyU', 'u'))) || // Mac: Cmd+Opt+I / Cmd+Opt+U
+            (mod && (isKey('KeyU', 'u') || isKey('KeyS', 's')))
           ) {
             e.preventDefault();
+            e.stopPropagation();
           }
-        });
+        }, true);
       }
     })();
   </script>
