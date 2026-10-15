@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
+  <!-- ЗАХИСТ БРАУЗЕРА (CSP та безпека посилань) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob: https:; connect-src 'self' https:;" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  
   <!-- Primary SEO Meta Tags -->
   <title>FORGE BY STEF (FBS) — 3D-друк деталей, декору та дрібносерійне виробництво | Івано-Франківськ / Яремче</title>
   <meta name="description" content="FORGE BY STEF — Ваша Кузня інновацій. Створюємо те, що не можна купити! Професійний 3D-друк та 3D-моделювання, відновлення рідкісних автозапчастин, інтер'єрний декор, прототипи та дрібносерійне виробництво. Івано-Франківськ, Яремче, доставка по Україні та за кордон." />
@@ -1350,6 +1355,107 @@
         toast.classList.remove('flex');
       }, 3800);
     }
+  </script>
+
+  <!-- КОМПЛЕКСНИЙ ЗАХИСТ САЙТУ ТА ФОРМ (FORGE BY STEF) -->
+  <script>
+    (function () {
+      const SecurityConfig = {
+        enableCopyProtection: true, // Поставте false, якщо потрібно відкрити F12 або праву кнопку миші
+        cooldownSeconds: 60         // Пауза між відправками форми з одного браузера (секунд)
+      };
+
+      // 1. Очищення тексту від шкідливого коду (XSS-санітизація)
+      function sanitizeInput(str) {
+        const temp = document.createElement('div');
+        temp.textContent = str.trim();
+        return temp.innerHTML
+          .replace(/javascript:/gi, '')
+          .replace(/on\w+=/gi, '');
+      }
+
+      // 2. Автоматичне створення блоку сповіщень (якщо його ще немає на сторінці)
+      function showSecurityToast(message, isError = false) {
+        let toast = document.getElementById('security-toast');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.id = 'security-toast';
+          document.body.appendChild(toast);
+        }
+        toast.textContent = message;
+        toast.style.cssText = `
+          position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+          padding: 14px 22px; border-radius: 14px; color: #fff;
+          font-family: sans-serif; font-weight: 600; font-size: 14px;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+          background: ${isError ? '#e11d48' : '#059669'};
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          opacity: 1; transform: translateY(0);
+        `;
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateY(20px)';
+        }, 3500);
+      }
+
+      // 3. Автоматичний захист усіх форм на сторінці (Honeypot + Cooldown + XSS)
+      document.querySelectorAll('form').forEach((form, index) => {
+        // Автоматично додаємо приховану пастку для ботів у кожну форму
+        if (!form.querySelector('.bot-trap-input')) {
+          const trapWrapper = document.createElement('div');
+          trapWrapper.style.display = 'none';
+          trapWrapper.setAttribute('aria-hidden', 'true');
+          trapWrapper.innerHTML = `<input type="text" class="bot-trap-input" name="website_url_${index}" tabindex="-1" autocomplete="off" />`;
+          form.prepend(trapWrapper);
+        }
+
+        // Перехоплюємо відправку форми для перевірки безпеки
+        form.addEventListener('submit', function (e) {
+          const trap = form.querySelector('.bot-trap-input');
+          if (trap && trap.value !== '') {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            console.warn('Спрацював захист від ботів.');
+            return;
+          }
+
+          const lastSubmit = localStorage.getItem('fbs_last_submit');
+          const now = Date.now();
+          if (lastSubmit && (now - parseInt(lastSubmit, 10)) < SecurityConfig.cooldownSeconds * 1000) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            const waitLeft = Math.ceil((SecurityConfig.cooldownSeconds * 1000 - (now - parseInt(lastSubmit, 10))) / 1000);
+            showSecurityToast(`⚠️ Зачекайте ${waitLeft} сек. перед повторною відправкою`, true);
+            return;
+          }
+
+          // Очищуємо всі текстові поля перед відправкою
+          form.querySelectorAll('input[type="text"], input[type="tel"], input[type="email"], textarea').forEach(input => {
+            if (!input.classList.contains('bot-trap-input')) {
+              input.value = sanitizeInput(input.value);
+            }
+          });
+
+          localStorage.setItem('fbs_last_submit', now.toString());
+        }, true);
+      });
+
+      // 4. Захист зображень, логотипів та коду сторінки від копіювання
+      if (SecurityConfig.enableCopyProtection) {
+        document.querySelectorAll('img').forEach(img => img.setAttribute('draggable', 'false'));
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+          if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && ['I', 'i', 'J', 'j', 'C', 'c'].includes(e.key)) ||
+            (e.ctrlKey && ['U', 'u', 'S', 's'].includes(e.key))
+          ) {
+            e.preventDefault();
+          }
+        });
+      }
+    })();
   </script>
 </body>
 </html>
